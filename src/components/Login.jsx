@@ -15,13 +15,36 @@ const Login = () => {
     password: ''
   });
 
-  // Redirigir cuando el login sea exitoso
-  useEffect(() => {
-    if (isAuthenticated) {
-      setCredentials({ email: '', password: '' });
-      navigate('/');
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setError(null)
+    try {
+      const res = await fetch(`${API}/api/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      })
+
+      const data = await res.text()
+
+      if (!res.ok) throw new Error(data || 'Credenciales inválidas')
+
+      localStorage.setItem('jwt_token', data)
+      localStorage.setItem('user_role', 'USER');
+
+      window.location.href = '/';
+      // Al usar window.location.href = '/', obligamos 
+      // al navegador a recargar la página completa. Esto garantiza que:
+      // El Header vuelva a leer el localStorage.
+      // Como ahora el token está guardado como jwt_token, 
+      // el Header lo encontrará y cambiará mágicamente los
+      // botones de "Iniciar Sesión" por los de "Carrito" y "Cerrar Sesión".
+      //antes estaba navigate('/')
+
+    } catch (err) {
+      setError(err.message)
     }
-  }, [isAuthenticated, navigate]);
+  }, [isAuthenticated, navigate];
 
   // Limpiar errores si el componente se desmonta
   useEffect(() => {

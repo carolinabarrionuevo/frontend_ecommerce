@@ -42,9 +42,14 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/admin" element={<AdminProducts />} />
+<<<<<<< HEAD
           <Route path="/carrito" element={<Carrito />} />
           <Route path="/favorites" element={<FavoritesList />} />
           <Route path="/checkout" element={<Checkout />} />
+=======
+          <Route path="/cart" element={<CartPanel />} />
+          <Route path="/products/:id" element={<ProductDetail />} />
+>>>>>>> f4180a9 (navbar segun usuario logueado o no y empece con el carrito)
         </Routes>
       </main>
 
@@ -54,5 +59,39 @@ function App() {
     </BrowserRouter>
   )
 }
+export default App;
 
-export default App
+// // function App() {
+// //   return (
+// //     <>
+// //       <nav className="navbar">
+// //         <Link to="/" className="nav-brand">E-commerce-UADE</Link>
+// //         <div className="nav-links">
+// //           <Link to="/">Inicio</Link>
+// //           <Link to="/login">Iniciar Sesión</Link>
+// //           <Link to="/register">Registrarse</Link>
+// //           <Link to="/admin">Admin</Link>
+// //           <Link to="/cart">Carrito</Link>
+// //         </div>
+// //       </nav>
+
+// //       <main className="main-content">
+// //         <Routes>
+// //           <Route path="/products/:id" element={<ProductDetail />} />
+// //           <Route path="/" element={<ProductCatalog />} />
+// //           <Route path="/login" element={<Login />} />
+// //           <Route path="/register" element={<Register />} />
+// //           <Route path="/admin" element={<AdminProducts />} />
+// //           <Route path="/cart" element={<CartPanel />} /> 
+// //         </Routes>
+// //       </main>
+
+// //       <footer className="footer">
+// //         <p>API TPO</p>
+// //       </footer>
+// //     </>
+// //   )
+// // }
+
+// // export default App
+
