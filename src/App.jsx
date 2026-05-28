@@ -42,14 +42,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/admin" element={<AdminProducts />} />
-<<<<<<< HEAD
-          <Route path="/carrito" element={<Carrito />} />
-          <Route path="/favorites" element={<FavoritesList />} />
-          <Route path="/checkout" element={<Checkout />} />
-=======
           <Route path="/cart" element={<CartPanel />} />
           <Route path="/products/:id" element={<ProductDetail />} />
->>>>>>> f4180a9 (navbar segun usuario logueado o no y empece con el carrito)
         </Routes>
       </main>
 

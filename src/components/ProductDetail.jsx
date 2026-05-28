@@ -41,9 +41,42 @@ const dispatch = useDispatch();
     )
   }
 
+<<<<<<< HEAD
   const handleAddToCart = () => {
     console.log(product)
     dispatch(addToCart({ productoId: product.id, cantidad: cantidad }));
+=======
+  const agregarAlCarrito = async () => {
+    const token = localStorage.getItem('jwt_token');
+
+    if (!token) {
+      alert("Debes iniciar sesión para agregar productos al carrito");
+      return;
+    }
+
+    try {
+      const response = await fetch(`${API}/api/carrito/items`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ 
+          id_producto: product.id, 
+          cantidad: 1 
+        })
+      });
+
+      if (response.ok) {
+        alert("Producto agregado al carrito con éxito");
+      } else {
+        const errorMsg = await response.text();
+        alert("Error al agregar: " + errorMsg);
+      }
+    } catch (err) {
+      console.error("Error de conexión:", err);
+    }
+>>>>>>> d4a91a0 (carrito y funcionalidades para agregar productos)
   };
 
   return (
@@ -70,6 +103,7 @@ const dispatch = useDispatch();
           <h1>{product.nombre}</h1>
           <p className="description">{product.descripcion}</p>
           <p className="price">${product.precio}</p>
+<<<<<<< HEAD
           
           {/* NUEVO: Controles de cantidad */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '20px' }}>
@@ -101,6 +135,9 @@ const dispatch = useDispatch();
               width: '100%', fontSize: '1.1rem', fontWeight: 'bold'
             }}
           >
+=======
+          <button className="btn-add-cart" onClick={agregarAlCarrito}>
+>>>>>>> d4a91a0 (carrito y funcionalidades para agregar productos)
             Agregar al Carrito
           </button>
         </div>
