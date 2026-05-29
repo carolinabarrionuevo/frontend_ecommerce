@@ -2,6 +2,7 @@ import { useState, useEffect} from 'react'
 import ProductCard from './ProductCard'
 import "../style/ProductCatalog.css"
 
+
 import CategoryList from './CategoryList';
 
 const API = 'http://localhost:8080'
@@ -12,6 +13,7 @@ const ProductCatalog = () => {
   const [error, setError] = useState(null)
   const [categorias, setCategorias] = useState([])
   const [selectedCategory, setSelectedCategory] = useState(null)
+
 
 
   // Función unificada para traer productos y categorías de forma eficiente
@@ -57,7 +59,7 @@ const categoriaEncontrada = selectedCategory
   ? categorias.find(cat => cat.id === selectedCategory) 
   : null;
 
-// 2. Ahora filtramos los productos de forma súper rápida
+// 2. Ahora filtramos los productos
 const productosFiltrados = categoriaEncontrada
   ? productos.filter(producto => {
       return producto.categorias && producto.categorias.includes(categoriaEncontrada.nombre);
@@ -80,12 +82,8 @@ const productosFiltrados = categoriaEncontrada
             {productosFiltrados.map(producto => (
               <ProductCard
                 key={producto.id} 
-                nombre={producto.nombre}
-                precio={formatearPrecio(producto.precio)}
-                imagen={producto.imagenUrl}
-                id={producto.id}
-                freeShipping={producto.freeShipping}
-                isPromo={producto.promo}>
+                producto={producto}
+                precioFormateado={formatearPrecio(producto.precio)}>
               </ProductCard>
             ))}
           </div>
