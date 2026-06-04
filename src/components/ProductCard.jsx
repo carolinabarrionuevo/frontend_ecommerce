@@ -3,10 +3,13 @@ import { Link } from 'react-router-dom'
 import '../style/ProductCard.css';
 import {useFavorite} from '../hooks/context/FavoriteProvider.jsx'
 import { useCart } from '../hooks/useContext/CartContext.jsx';
+import defaultImage from '../assets/imgXdefault.jpg';
 
 const ProductCard = ({producto, precioFormateado}) => {
   const { favoriteItems, addToFavorites } = useFavorite()
   const { addToCart } = useCart();
+
+  if (!producto) return null; //para que cargue aunque falle en leer productos de la BD
 
   const isFavorite = favoriteItems.some(item => item.id === producto.id)
   const handleAddToFavorite = () => {
@@ -20,8 +23,8 @@ return (
     <div className="product-card">
       <div className="product-image-container">
         <img 
-          src={producto.imagenUrl || producto.imagen} 
-          alt={`${producto.nombre}'s product`}
+          src={producto?.imagenUrl || producto?.imagen || defaultImage} 
+          alt={`${producto?.nombre || 'Producto sin nombre'}'s product`}
           className="card__image"
         />
       </div>

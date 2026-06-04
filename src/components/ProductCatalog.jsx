@@ -80,12 +80,9 @@ const productosFiltrados = categoriaEncontrada
             {productosFiltrados.map(producto => (
               <ProductCard
                 key={producto.id} 
-                nombre={producto.nombre}
-                precio={formatearPrecio(producto.precio)}
-                imagen={producto.imagenUrl}
-                id={producto.id}
-                freeShipping={producto.freeShipping}
-                isPromo={producto.promo}>
+                producto={producto}
+                precioFormateado={formatearPrecio(producto.precio)}
+                >
               </ProductCard>
             ))}
           </div>
