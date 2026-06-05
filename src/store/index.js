@@ -5,7 +5,7 @@ import productReducer from './slices/productosSlice';
 export const store = configureStore({
     reducer: {
         favorite: favoriteReducer,
-        product : productReducer
+        products : productReducer
     },
 
 });
