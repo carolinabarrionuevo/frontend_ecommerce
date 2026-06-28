@@ -1,0 +1,90 @@
+/* Contenedor principal */
+.orders-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.orders-container h2 {
+  color: #333;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+/* Estado de carga */
+.loading {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 50px;
+}
+
+/* Mensajes de error o vacío */
+.error, .empty-orders {
+  text-align: center;
+  color: #d9534f;
+  background: #fdf7f7;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #d9534f;
+}
+
+/* Tarjetas de pedidos */
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius); 
+}
+
+.order-card p strong {
+  color: var(--text-muted);
+}
+
+.order-card:hover {
+  transform: translateY(-2px);
+}
+
+.order-card h3 {
+  margin-top: 0;
+  color: #007bff;
+}
+
+/* Lista de productos dentro del pedido */
+.order-items {
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+}
+
+.order-items ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.order-items li {
+  padding: 5px 0;
+  border-bottom: 1px dotted #ccc;
+}
+
+/* Link para volver */
+.orders-link {
+  display: inline-block;
+  margin-top: 15px;
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.orders-link:hover {
+  text-decoration: underline;
+}

@@ -9,6 +9,7 @@ import FavoritesList from './components/FavoriteList'
 import Checkout from './components/Checkout'
 import Navbar from './components/Navbar'
 import './App.css'
+import UserOrders from './components/UserOrders'
 
 import { fetchCartItems } from './store/slices/cartSlice';
 // import ProductList from './ProductList.jsx';
@@ -45,6 +46,7 @@ function App() {
           <Route path="/carrito" element={<Carrito />} />
           <Route path="/favorites" element={<FavoritesList />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/mis-pedidos" element={<UserOrders />} />
         </Routes>
       </main>
 
